@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Evaluation Poo Jeremy{% endblock %}</title>
+        
+
+            
+            <style>
+
+            li{
+                list-style: none; 
+            }
+
+            th,td{
+                border: 1px black solid
+            }
+            {% block stylesheets %}
+            {% endblock %}
+        </style>
+
+    </head>
+    <body>
+        <header>
+            <nav>
+                <center>
+                    <ul style="display:flex; align-items:center; justify-content: space-around">
+                        <li><a href="{{path('app_home')}}">Accueil</a></li>
+                        <li><a href="{{path('app_newplayer')}}">Ajouter un joueur</a></li>
+                        <li><a href="{{path('app_newgame')}}">Ajouter un Jeu</a></li>
+                        <li><a href="{{path('app_newContest')}}">Ajouter un Match</a></li>
+                        
+                    </ul>
+                </center>
+            </nav>
+            <h1>
+                {% block H1 %}{% endblock %}
+            </h1>
+        </header>
+        {% block body %}{% endblock %}
+
+        <script>
+            {% block javascripts %}{% endblock %}
+        </script>
+    </body>
+</html>

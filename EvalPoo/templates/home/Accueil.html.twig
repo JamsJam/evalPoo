@@ -1,0 +1,157 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{parent()}} Ajouter un Joueur{% endblock %}
+
+{% block H1 %}Ajouter de Joueurs{% endblock %}
+
+{% block body %}
+
+    <section>
+
+        <center>
+            <h2>Liste des joueurs</h2>
+        </center>
+
+        <center>
+
+            <table >
+
+                <thead >
+
+                    <th>Email</th>
+                    <th>Pseudo</th>
+
+                </thead>
+
+                <tbody >
+                    {% for player in players %}
+                        
+                        <tr>
+                            
+                            <td>{{player.email}}</td>
+                            
+                            <td>{{player.nickname}}</td>
+
+                        </tr>
+                        
+
+                    {% endfor %}
+                </tbody>
+
+            </table>
+
+        </center>
+    </section>
+
+    <br><br><br>
+
+    <section>
+
+        <center>
+            <h2>Liste des jeux Disponibles</h2>
+        </center>
+
+        <center>
+            <table >
+
+                <thead >
+                    <th>Titre</th>
+                    <th>Joueur Min</th>
+                    <th>Joueur Max</th>
+                </thead>
+
+                <tbody>
+                    {% for game in games %}
+                        
+                        <tr>
+                            
+                            <td>{{game.title}}</td>
+                            
+                            <td>{{game.minPlayers}}</td>
+
+                            <td>{{game.maxPlayer}}</td>
+
+                        </tr>
+                        
+
+                    {% endfor %}
+                </tbody>
+
+            </table>
+        </center>
+
+    </section>
+
+    <br><br><br>
+
+    <section>
+
+        <center>
+            <h2></h2>
+        </center>
+
+        <center>
+
+            <table>
+            
+                <thead ></thead>
+
+                <tbody >
+                    {% for contest in contests %}
+                        
+                        <tr>
+                            
+                            <td>{{contest.game.title}}</td>
+                            
+                            <td>{{contest.startDate}}</td>
+
+                            <td>
+                                                                {% if contest.player|length > 0 %}
+                                
+                                    {% for player in contest.player %}
+                                        
+
+                                        {% if player != contest.player|last %}
+                                            
+                                            {{player.nickname}},
+
+                                        {% else %}
+
+                                            {{player.nickname}}.
+
+
+                                        {% endif %}
+
+
+                                        
+                                    {% endfor %}
+
+   
+
+                                {% endif %}
+                            </td>
+
+                            <td>
+                                {% if contest.winner %}
+                                    
+                                    {{contest.winner.nickname}}
+                                
+                                {% else %}
+                                    
+                                    pas encore de gagnant
+
+                                {% endif %}
+                            </td>
+
+                        </tr>
+                        
+
+                    {% endfor %}
+                </tbody>
+
+            </table>
+        </center>
+
+    </section>
+
+{% endblock %}

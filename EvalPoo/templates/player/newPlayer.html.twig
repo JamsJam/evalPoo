@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{parent()}} Ajouter un Joueur{% endblock %}
+
+{% block H1 %}Ajouter de Joueurs{% endblock %}
+
+{% block body %}
+
+    <center>
+        {{form_start(formPlayer)}}
+
+            {{ form_widget(formPlayer) }}
+
+            <input type="submit" value="Ajouter un joueur">
+
+        {{form_end(formPlayer)}}
+        
+    </center>
+
+{% endblock %}
